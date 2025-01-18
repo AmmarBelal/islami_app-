@@ -21,36 +21,35 @@ class _hadithState extends State<hadith> {
    if(hadithDataList.isEmpty) loadHadith();
     return Container(
       decoration: const BoxDecoration(
+        color: Colors.transparent,
         image: DecorationImage(
             image: AssetImage(AppAssets.Hadithback), fit: BoxFit.cover),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           Image.asset("assets/images/qur2an_Screen/Logo (2).png"),
-          Expanded(
-            child: CarouselSlider(
-                items: hadithDataList.map((e) {
-                  return hadithCard(
-                    HadithData: e,
-                  );
-                }).toList(),
-                options: CarouselOptions(
-                  aspectRatio: 0.7,
-                  viewportFraction: 0.68,
-                  initialPage: 0,
-                  enableInfiniteScroll: true,
-                  reverse: false,
-                  autoPlay: false,
-                  autoPlayInterval: Duration(seconds: 3),
-                  autoPlayAnimationDuration: Duration(milliseconds: 800),
-                  autoPlayCurve: Curves.fastOutSlowIn,
-                  enlargeCenterPage: true,
-                  enlargeFactor: 0.3,
-                  scrollDirection: Axis.horizontal,
-                )),
-          )
+          CarouselSlider(
+              items: hadithDataList.map((e) {
+                return hadithCard(
+                  HadithData: e,
+                );
+              }).toList(),
+              options: CarouselOptions(
+                aspectRatio: 0.7,
+                viewportFraction: 0.68,
+                initialPage: 0,
+                enableInfiniteScroll: true,
+                reverse: false,
+                autoPlay: false,
+                autoPlayInterval: Duration(seconds: 3),
+                autoPlayAnimationDuration: Duration(milliseconds: 800),
+                autoPlayCurve: Curves.fastOutSlowIn,
+                enlargeCenterPage: true,
+                enlargeFactor: 0.3,
+                scrollDirection: Axis.horizontal,
+              ))
         ],
       ),
     );
