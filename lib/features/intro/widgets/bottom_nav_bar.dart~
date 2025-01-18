@@ -1,0 +1,55 @@
+import 'package:flutter/material.dart';
+
+import '../../../core/theme/app_colors.dart';
+
+class PaginationBar extends StatelessWidget {
+  final int currentIndex;
+  final int totalPages;
+  final Function(int index) onPageChanged;
+
+  const PaginationBar({
+    super.key,
+    required this.currentIndex,
+    required this.totalPages,
+    required this.onPageChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        if (currentIndex > 0)
+          TextButton(
+            onPressed: () => onPageChanged(currentIndex - 1),
+            child: const Text('Back',
+            style: TextStyle(
+              color: AppColors.gold,
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),),
+          ),
+          Spacer(),
+        for (int i = 0; i < totalPages; i++)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4.0),
+            child: CircleAvatar(
+              radius: 5,
+              backgroundColor: i == currentIndex ? Colors.yellow : Colors.grey,
+            ),
+          ),
+          Spacer(),
+        if (currentIndex < totalPages - 1)
+          TextButton(
+            onPressed: () => onPageChanged(currentIndex + 1),
+            child: const Text('Next',
+                style: TextStyle(
+                  color: AppColors.gold,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),),
+          ),
+      ],
+    );
+  }
+}
