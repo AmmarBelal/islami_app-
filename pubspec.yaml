@@ -69,6 +69,9 @@ flutter:
    - assets/images/sbha_Screen/
    - assets/files/suras/
    - assets/files/hadith/
+   - assets/images/radio_Screen/
+   - assets/images/times_Screen/
+
 
   fonts:
      - family: "Janna"

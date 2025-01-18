@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami_application/core/constants/app_assets.dart';
+import 'package:islami_application/features/layout/radio/widgets/radio_card.dart';
+import 'package:islami_application/features/layout/radio/widgets/reciters_card.dart';
 
 import '../../../core/theme/app_colors.dart';
 
@@ -19,7 +21,7 @@ class _radioState extends State<radio> {
     var mediaQuery = MediaQuery.of(context);
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage(AppAssets.Radioback), fit: BoxFit.cover)),
@@ -30,7 +32,7 @@ class _radioState extends State<radio> {
           Row(
             children: [
               SizedBox(
-                width:mediaQuery.size.width * 0.460,
+                width: mediaQuery.size.width * 0.460,
                 height: 40,
                 child: ElevatedButton(
                   onPressed: () {
@@ -39,7 +41,9 @@ class _radioState extends State<radio> {
                     });
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: _clicked ? AppColors.gold : AppColors.black.withOpacity(0.5),
+                    backgroundColor: _clicked
+                        ? AppColors.gold
+                        : AppColors.black.withOpacity(0.5),
                   ),
                   child: Text("Radio",
                       style: TextStyle(
@@ -49,7 +53,7 @@ class _radioState extends State<radio> {
                           color: _clicked ? AppColors.black : AppColors.white)),
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               SizedBox(
                 width: mediaQuery.size.width * 0.460,
                 height: 40,
@@ -57,11 +61,12 @@ class _radioState extends State<radio> {
                   onPressed: () {
                     setState(() {
                       _clicked = !_clicked;
-
                     });
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: _clicked ? AppColors.black.withOpacity(0.5) :AppColors.gold ,
+                    backgroundColor: _clicked
+                        ? AppColors.black.withOpacity(0.5)
+                        : AppColors.gold,
                   ),
                   child: Text("Reciters",
                       style: TextStyle(
@@ -73,7 +78,21 @@ class _radioState extends State<radio> {
               ),
             ],
           ),
-
+         _clicked == true ? Expanded(
+            child: SizedBox(
+                width: 400,
+                height: 400,
+                child: ListView.builder(
+                  itemBuilder: (context, index) => radioCard(),
+                )),
+          ) : Expanded(
+           child: SizedBox(
+               width: 400,
+               height: 400,
+               child: ListView.builder(
+                 itemBuilder: (context, index) => recitersCard(),
+               )),
+         )
         ]));
   }
 }
