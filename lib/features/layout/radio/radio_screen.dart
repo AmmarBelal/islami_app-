@@ -13,7 +13,6 @@ class radio extends StatefulWidget {
 
 class _radioState extends State<radio> {
   bool _clicked = true;
-  bool _isclicked = false;
 
   @override
   Widget build(BuildContext context) {
